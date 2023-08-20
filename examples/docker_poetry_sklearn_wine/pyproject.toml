@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "mlflowenv"
+version = "0.1.0"
+description = "MLFlow tutorial with notebook"
+authors = ["seang"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+scikit-learn = "^1.2.0"
+azureml-mlflow = "^1.52.0"
+jupyter = "^1.0.0"
+pandas = "^2.0.3"
+flask = "^2.3.2"
+gunicorn = "^21.2.0"
+mlflow = "^2.6.0"
+pymysql = "^1.1.0"
+sqlalchemy = "^2.0.20"
+alembic = "^1.11.3"
+boto3 = "^1.28.30"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
