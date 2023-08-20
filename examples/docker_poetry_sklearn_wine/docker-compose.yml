@@ -74,6 +74,23 @@ services:
             - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
         command: poetry run mlflow server --backend-store-uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE} --default-artifact-root s3://mlflow/ --host 0.0.0.0
 
+
+    mc:
+        image: minio/mc
+        # insure that the server container is running before building the client
+        depends_on:
+            - minio
+        environment:
+            - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+            - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+            - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        entrypoint: >
+            /bin/sh -c "
+                /usr/bin/mc config;
+                /usr/bin/mc config host add minio ${MLFLOW_S3_ENDPOINT_URL} ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY};
+                /usr/bin/mc mb mlflow;
+                exit 0;
+            "
 volumes:
     dbdata:
     minio_data:

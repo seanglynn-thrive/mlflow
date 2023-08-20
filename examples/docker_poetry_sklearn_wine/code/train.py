@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         
-        model_name = 'registered_model_test'
+        model_name = 'ElasticnetWineModel'
         # new_model = register_model(model_name)
         print(f"Registering new_model: {model_name}")
 

@@ -4,16 +4,12 @@ Build, deploy & serve model tutorial with MLFlow
 ## Get started
 
 ### Spin up cluster with docker
-  + Spin up mlflow cluster:
-    ```bash
-    docker-compose up --build
-    
-    ```
-  + Tear down mlflow cluster:
-    ```bash
-    docker-compose down --remove-orphans
-    
-    ```
++ Spin up mlflow cluster:
+  ```bash
+  docker-compose up --build
+  
++ MLFlow: http://127.0.0.1:5001/
++ Minio object storage: http://127.0.0.1:9001/
 
 ### Local install
 #### 1. Install dependancies
@@ -40,6 +36,7 @@ poetry run mlflow ui
 #### 5. Train Model
 ```bash
 poetry run python train.py
+
 
 ```
     
